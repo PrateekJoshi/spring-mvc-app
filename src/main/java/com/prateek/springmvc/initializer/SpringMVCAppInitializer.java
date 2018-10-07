@@ -30,7 +30,7 @@ public class SpringMVCAppInitializer implements WebApplicationInitializer{
 		
 		ServletRegistration.Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(context));
 		servlet.setLoadOnStartup(1);
-		servlet.addMapping("/webapp/*");
+		servlet.addMapping("/");
 		
 	}
 

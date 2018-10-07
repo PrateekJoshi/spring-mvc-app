@@ -3,6 +3,6 @@
 <title>Yahoo!!</title>
 </head>
 <body>
-Welcome Prateek
+Welcome ${name} 
 </body>
 </html>
