@@ -2,12 +2,19 @@ package com.prateek.springmvc.todo.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
 public class Todo {
 	private int id;
 	private String user;
+	
+	@Size(min=6, message="Enter at least 6 characters")				//hibernate-validator
 	private String desc;
 	private Date targetDate;
 	private boolean isDone;
+	
+	public Todo() {}
+	
 	
 	public Todo(int id, String user, String desc, Date targetDate, boolean isDone) {
 		super();
