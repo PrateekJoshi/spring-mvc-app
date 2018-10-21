@@ -1,12 +1,17 @@
 #!/bin/bash
 
-echo "Building webapp..."
+build_image="spring_mvc_build_image"
+build_container="spring_mvc_build_container"
 
-mvn package
+function create_container()
+{
+	docker build --pull --force-rm=true -t $build_image .
+}
 
-echo "Generated war .....running app"
+function run_container()
+{
+	docker run --name $build_container -v `pwd`:/tmp/build $build_image ./maven_build.sh
+}
 
-mvn tomcat7:run
-
-echo "Successully deployed app"
-
+create_container
+run_container
