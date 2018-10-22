@@ -27,7 +27,7 @@ function delete_container()
 
 function run_app()
 {
-	docker run --name $build_container -v `pwd`:/tmp/build $build_image ./run_app.sh
+	docker run -p 8181:8181 --name $build_container -v `pwd`:/tmp/build $build_image ./run_app.sh
 }
 
 
