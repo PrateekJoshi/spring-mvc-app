@@ -33,8 +33,8 @@ function run_app()
 
 function install_docker()
 {
-	apt-get update
-	apt-get install \
+	apt-get update -y
+	apt-get install -y \
      		apt-transport-https \
      		ca-certificates \
      		curl \
@@ -47,8 +47,8 @@ function install_docker()
    		"deb [arch=amd64] https://download.docker.com/linux/debian \
    		$(lsb_release -cs) \
    		stable"
-	apt-get update
-	apt-get install docker-ce
+	apt-get update -y
+	apt-get install -y docker-ce
 }
 
 install_docker
