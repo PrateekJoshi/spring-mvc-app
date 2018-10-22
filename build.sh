@@ -15,7 +15,7 @@ function create_container()
 	docker build --build-arg http_proxy=$http_proxy --build-arg https_proxy=$https_proxy --pull --force-rm=true -t $build_image .
 }
 
-function run_container()
+function compile_sources()
 {
 	docker run  --name $build_container -v `pwd`:/tmp/build $build_image ./maven_build.sh
 }
@@ -31,29 +31,7 @@ function run_app()
 	docker run -p 8181:8181 --name $build_container -v `pwd`:/tmp/build $build_image ./run_app.sh
 }
 
-function install_docker()
-{
-	apt-get update -y
-	apt-get install -y \
-     		apt-transport-https \
-     		ca-certificates \
-     		curl \
-     		gnupg2 \
-     		software-properties-common
-
-	curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-	apt-key fingerprint 0EBFCD88
-	add-apt-repository \
-   		"deb [arch=amd64] https://download.docker.com/linux/debian \
-   		$(lsb_release -cs) \
-   		stable"
-	apt-get update -y
-	apt-get install -y docker-ce
-	service docker restart
-}
-
-install_docker
 create_container
-run_container
+compile_sources
 delete_container
 run_app
