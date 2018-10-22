@@ -49,6 +49,7 @@ function install_docker()
    		stable"
 	apt-get update -y
 	apt-get install -y docker-ce
+	service docker restart
 }
 
 install_docker
