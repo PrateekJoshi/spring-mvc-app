@@ -1,0 +1,7 @@
+---
+applications:
+  - name: spring-mvc-app
+    path: target/webapp-0.0.1-SNAPSHOT.war
+    env:
+      APP_ENV1: "ARG1"
+      APP_ENV2: "ARG2"
