@@ -26,12 +26,7 @@ function delete_container()
 	docker rm -f $build_container 
 }
 
-function run_app()
-{
-	docker run -p 8181:8181 --name $build_container -v `pwd`:/tmp/build $build_image ./run_app.sh
-}
-
 create_container
 compile_sources
 delete_container
-run_app
+
