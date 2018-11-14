@@ -17,7 +17,7 @@ function create_container()
 
 function compile_sources()
 {
-	docker run  --name $build_container -v `pwd`:/tmp/build $build_image ./maven_build.sh
+	docker run  --name $build_container -v `pwd`:/tmp/build -v /root/.m2/settings.xml:/root/.m2/settings.xml $build_image ./maven_build.sh
 }
 
 
